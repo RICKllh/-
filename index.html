@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardápio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <div class="display" id="nome-pizzaria">🍕 Pizzaria</div>
+    <div class="tag">Peça pelo site, receba em casa</div>
+  </div>
+  <a href="admin.html" class="tag">Painel da loja →</a>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main class="grid" id="grid">
+  <p class="empty-state">Carregando cardápio...</p>
+</main>
+
+<div class="cart-bar" id="cart-bar">
+  <span id="cart-summary">0 itens · R$ 0,00</span>
+  <span>Ver carrinho →</span>
+</div>
+
+<!-- Modal: produto -->
+<div class="overlay" id="overlay-produto">
+  <div class="sheet">
+    <button class="close" data-close="overlay-produto">×</button>
+    <img id="p-img" src="" alt="" style="width:100%;height:160px;object-fit:cover;border-radius:10px;">
+    <h2 id="p-nome" style="margin-top:14px;"></h2>
+    <p id="p-desc" style="color:var(--text-soft);font-size:14px;"></p>
+
+    <div id="p-sabores"></div>
+
+    <label>Alguma observação? (opcional)</label>
+    <input id="p-obs" placeholder="ex: sem cebola, borda recheada">
+
+    <div class="qty-control">
+      <button id="qty-menos">−</button>
+      <span id="qty-valor">1</span>
+      <button id="qty-mais">+</button>
+    </div>
+
+    <button class="primary-btn" id="btn-add-carrinho">Adicionar · R$ 0,00</button>
+  </div>
+</div>
+
+<!-- Modal: carrinho -->
+<div class="overlay" id="overlay-carrinho">
+  <div class="sheet">
+    <button class="close" data-close="overlay-carrinho">×</button>
+    <h2>Seu carrinho</h2>
+    <div id="lista-carrinho"></div>
+    <div class="totals-row"><span>Subtotal</span><span id="carrinho-subtotal">R$ 0,00</span></div>
+    <button class="primary-btn" id="btn-ir-checkout">Continuar</button>
+  </div>
+</div>
+
+<!-- Modal: checkout -->
+<div class="overlay" id="overlay-checkout">
+  <div class="sheet">
+    <button class="close" data-close="overlay-checkout">×</button>
+    <h2>Finalizar pedido</h2>
+
+    <label>Seu nome</label>
+    <input id="ck-nome" placeholder="Nome completo">
+
+    <label>Telefone (com DDD)</label>
+    <input id="ck-telefone" placeholder="(11) 91234-5678">
+
+    <label>Endereço completo</label>
+    <input id="ck-endereco" placeholder="Rua, número, complemento">
+
+    <label>Bairro</label>
+    <select id="ck-bairro"></select>
+
+    <label>Forma de pagamento</label>
+    <select id="ck-pagamento">
+      <option value="pix">Pix</option>
+      <option value="entrega">Dinheiro/cartão na entrega</option>
+    </select>
+
+    <div class="totals-row"><span>Subtotal</span><span id="ck-subtotal">R$ 0,00</span></div>
+    <div class="totals-row"><span>Entrega</span><span id="ck-taxa">R$ 0,00</span></div>
+    <div class="totals-row total"><span>Total</span><span id="ck-total">R$ 0,00</span></div>
+
+    <button class="primary-btn" id="btn-confirmar-pedido">Confirmar pedido</button>
+    <p class="error-msg" id="ck-erro" style="display:none;"></p>
+  </div>
+</div>
+
+<!-- Modal: pix -->
+<div class="overlay" id="overlay-pix">
+  <div class="sheet">
+    <button class="close" data-close="overlay-pix">×</button>
+    <h2>Pedido recebido!</h2>
+    <p style="color:var(--text-soft);font-size:14px;">Pague com Pix e envie o comprovante pra gente confirmar mais rápido.</p>
+    <div class="pix-box">
+      <div>Valor a pagar</div>
+      <div style="font-size:22px;font-weight:700;color:var(--tomato-dark);" id="pix-valor">R$ 0,00</div>
+      <div>Chave Pix</div>
+      <div class="pix-key" id="pix-chave"></div>
+    </div>
+    <a class="primary-btn" style="display:block;text-align:center;text-decoration:none;" id="btn-whatsapp" target="_blank">Enviar comprovante no WhatsApp</a>
+    <button class="secondary-btn" style="margin-top:10px;" id="btn-fechar-pix">Concluir</button>
+  </div>
+</div>
+
+<!-- Modal: confirmação pagamento na entrega -->
+<div class="overlay" id="overlay-sucesso">
+  <div class="sheet">
+    <button class="close" data-close="overlay-sucesso">×</button>
+    <h2>Pedido enviado!</h2>
+    <p style="color:var(--text-soft);font-size:14px;">Seu pedido foi recebido e já está sendo preparado. O pagamento é feito na entrega.</p>
+    <button class="primary-btn" id="btn-fechar-sucesso">Fechar</button>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

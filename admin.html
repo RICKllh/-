@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel da Pizzaria</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-box" id="login-box">
+  <div class="login-icon">🍕</div>
+  <h2>Painel da loja</h2>
+  <p class="login-sub">Entre com sua conta de administrador</p>
+  <label>E-mail</label>
+  <input id="login-email" type="email" placeholder="seu@email.com">
+  <label>Senha</label>
+  <input id="login-senha" type="password" placeholder="••••••••">
+  <button class="primary-btn" id="btn-login">Entrar</button>
+  <p class="error-msg" id="login-erro" style="display:none;"></p>
+  <a href="index.html" class="back-link">← Voltar para o cardápio</a>
+</div>
+
+<!-- Painel -->
+<div class="admin-shell" id="admin-wrap" style="display:none;">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">🍕 <span>Painel</span></div>
+    <nav class="sidebar-nav">
+      <button class="active" data-tab="tab-pedidos"><span>📋</span> Pedidos</button>
+      <button data-tab="tab-categorias"><span>🗂️</span> Categorias</button>
+      <button data-tab="tab-produtos"><span>🍽️</span> Produtos</button>
+      <button data-tab="tab-entregas"><span>🛵</span> Entregas</button>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-link">↩ Ver a loja</a>
+      <button class="sidebar-link logout" id="btn-logout">Sair</button>
+    </div>
+  </aside>
+
+  <main class="admin-content">
+
+    <!-- Pedidos -->
+    <div class="admin-panel active" id="tab-pedidos">
+      <h2>Pedidos recebidos</h2>
+      <div id="lista-pedidos"></div>
+    </div>
+
+    <!-- Categorias -->
+    <div class="admin-panel" id="tab-categorias">
+      <h2>Categorias</h2>
+      <div class="form-card">
+        <label>Nome da categoria</label>
+        <input id="cat-nome" placeholder="ex: Pizzas, Bebidas">
+        <button class="primary-btn" id="btn-salvar-categoria">Adicionar categoria</button>
+      </div>
+      <div id="lista-categorias" style="margin-top:20px;"></div>
+    </div>
+
+    <!-- Produtos -->
+    <div class="admin-panel" id="tab-produtos">
+      <h2>Produtos</h2>
+
+      <div class="form-card">
+        <label>Categoria</label>
+        <select id="prod-categoria"></select>
+
+        <label>Nome do produto</label>
+        <input id="prod-nome" placeholder="ex: Pizza Calabresa">
+
+        <label>Descrição</label>
+        <textarea id="prod-desc" rows="2" placeholder="ex: Molho, mussarela e calabresa fatiada"></textarea>
+
+        <label>Preço (R$)</label>
+        <input id="prod-preco" type="number" step="0.01" placeholder="45.00">
+
+        <label>URL da imagem</label>
+        <input id="prod-imagem" placeholder="https://...">
+
+        <div class="flavor-option" style="border:none;">
+          <input type="checkbox" id="prod-e-pizza">
+          <span>Esse produto é uma pizza (permite escolher sabores)</span>
+        </div>
+
+        <div id="prod-sabores-wrap" style="display:none;">
+          <label>Sabores disponíveis</label>
+          <div id="lista-sabores-form"></div>
+          <button class="secondary-btn" id="btn-add-sabor" type="button">+ adicionar sabor</button>
+        </div>
+
+        <button class="primary-btn" id="btn-salvar-produto">Salvar produto</button>
+        <button class="secondary-btn" id="btn-cancelar-edicao" style="display:none;margin-top:8px;">Cancelar edição</button>
+      </div>
+
+      <div id="lista-produtos" style="margin-top:24px;"></div>
+    </div>
+
+    <!-- Entregas -->
+    <div class="admin-panel" id="tab-entregas">
+      <h2>Bairros e taxa de entrega</h2>
+      <div class="form-card">
+        <label>Nome do bairro</label>
+        <input id="zona-nome" placeholder="ex: Centro">
+        <label>Taxa de entrega (R$)</label>
+        <input id="zona-taxa" type="number" step="0.01" placeholder="8.00">
+        <button class="primary-btn" id="btn-salvar-zona">Adicionar bairro</button>
+      </div>
+      <div id="lista-zonas" style="margin-top:20px;"></div>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
