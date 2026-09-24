@@ -7,7 +7,7 @@ import { firebaseConfig, configLoja } from "./firebase-config.js";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-document.getElementById("nome-pizzaria").textContent = "🍕 " + configLoja.nomePizzaria;
+document.getElementById("nome-pizzaria").textContent = configLoja.nomePizzaria;
 
 let categorias = [];
 let produtos = [];
