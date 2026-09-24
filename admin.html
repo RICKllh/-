@@ -10,7 +10,7 @@
 
 <!-- Login -->
 <div class="login-box" id="login-box">
-  <div class="login-icon">🍕</div>
+  <svg class="login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 6-9 14L3 8l9-6z"/><path d="M3 8h18"/></svg>
   <h2>Painel da loja</h2>
   <p class="login-sub">Entre com sua conta de administrador</p>
   <label>E-mail</label>
@@ -19,25 +19,55 @@
   <input id="login-senha" type="password" placeholder="••••••••">
   <button class="primary-btn" id="btn-login">Entrar</button>
   <p class="error-msg" id="login-erro" style="display:none;"></p>
-  <a href="index.html" class="back-link">← Voltar para o cardápio</a>
+  <a href="index.html" class="back-link">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Voltar para o cardápio
+  </a>
 </div>
 
 <!-- Painel -->
-<div class="admin-shell" id="admin-wrap" style="display:none;">
+<div id="admin-wrap" style="display:none;">
 
-  <aside class="sidebar">
-    <div class="sidebar-brand">🍕 <span>Painel</span></div>
-    <nav class="sidebar-nav">
-      <button class="active" data-tab="tab-pedidos"><span>📋</span> Pedidos</button>
-      <button data-tab="tab-categorias"><span>🗂️</span> Categorias</button>
-      <button data-tab="tab-produtos"><span>🍽️</span> Produtos</button>
-      <button data-tab="tab-entregas"><span>🛵</span> Entregas</button>
-    </nav>
-    <div class="sidebar-footer">
-      <a href="index.html" class="sidebar-link">↩ Ver a loja</a>
-      <button class="sidebar-link logout" id="btn-logout">Sair</button>
+  <header class="admin-header">
+    <div class="admin-brand">
+      <div class="mark">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l9 6-9 14L3 8l9-6z"/></svg>
+      </div>
+      <div>
+        <div class="title" id="admin-nome-loja">Painel</div>
+        <div class="subtitle">Área do administrador</div>
+      </div>
     </div>
-  </aside>
+    <div class="admin-header-actions">
+      <a href="index.html" class="btn-outline">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9v11h14V9"/></svg>
+        Ver a loja
+      </a>
+      <button class="btn-outline danger" id="btn-logout">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Sair
+      </button>
+    </div>
+  </header>
+
+  <nav class="admin-tabs">
+    <button class="active" data-tab="tab-pedidos">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6l1 2H8l1-2z"/><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M9 11h6M9 15h4"/></svg>
+      Pedidos
+    </button>
+    <button data-tab="tab-categorias">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.4L11.6 3.4A2 2 0 0010.2 2.8H4a2 2 0 00-2 2v6.2a2 2 0 00.6 1.4l9 9a2 2 0 002.8 0l6.2-6.2a2 2 0 000-2.8z"/><circle cx="7.5" cy="7.5" r="1"/></svg>
+      Categorias
+    </button>
+    <button data-tab="tab-produtos">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/></svg>
+      Produtos
+    </button>
+    <button data-tab="tab-entregas">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
+      Entregas
+    </button>
+  </nav>
 
   <main class="admin-content">
 
@@ -55,7 +85,7 @@
         <input id="cat-nome" placeholder="ex: Pizzas, Bebidas">
         <button class="primary-btn" id="btn-salvar-categoria">Adicionar categoria</button>
       </div>
-      <div id="lista-categorias" style="margin-top:20px;"></div>
+      <div id="lista-categorias"></div>
     </div>
 
     <!-- Produtos -->
@@ -93,7 +123,7 @@
         <button class="secondary-btn" id="btn-cancelar-edicao" style="display:none;margin-top:8px;">Cancelar edição</button>
       </div>
 
-      <div id="lista-produtos" style="margin-top:24px;"></div>
+      <div id="lista-produtos"></div>
     </div>
 
     <!-- Entregas -->
@@ -106,7 +136,7 @@
         <input id="zona-taxa" type="number" step="0.01" placeholder="8.00">
         <button class="primary-btn" id="btn-salvar-zona">Adicionar bairro</button>
       </div>
-      <div id="lista-zonas" style="margin-top:20px;"></div>
+      <div id="lista-zonas"></div>
     </div>
 
   </main>
