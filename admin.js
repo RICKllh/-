@@ -6,7 +6,9 @@ import {
   getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc,
   query, orderBy, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { firebaseConfig } from "./firebase-config.js";
+import { firebaseConfig, configLoja } from "./firebase-config.js";
+
+document.getElementById("admin-nome-loja").textContent = configLoja.nomePizzaria;
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -45,9 +47,9 @@ function iniciarPainel() {
 }
 
 // ---------- Navegação entre abas ----------
-document.querySelectorAll(".sidebar-nav button").forEach(btn => {
+document.querySelectorAll(".admin-tabs button").forEach(btn => {
   btn.onclick = () => {
-    document.querySelectorAll(".sidebar-nav button").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".admin-tabs button").forEach(b => b.classList.remove("active"));
     document.querySelectorAll(".admin-panel").forEach(p => p.classList.remove("active"));
     btn.classList.add("active");
     document.getElementById(btn.dataset.tab).classList.add("active");
